@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stellar Event - Professional Event Management</title>
+    <meta name="description" content="Stellar Event - Professional event management services for corporate events, weddings, exhibitions, and more. Creating memorable experiences in Bhopal.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Reset and Base Styles */
@@ -30,6 +31,7 @@
             line-height: 1.6;
             color: var(--dark);
             background-color: var(--light);
+            overflow-x: hidden;
         }
 
         .container {
@@ -47,6 +49,11 @@
             width: 100%;
             top: 0;
             z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 5px 0;
         }
 
         .header-container {
@@ -54,6 +61,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
+            transition: all 0.3s ease;
         }
 
         .logo {
@@ -89,10 +97,26 @@
             color: var(--dark);
             font-weight: 500;
             transition: color 0.3s;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s;
         }
 
         nav ul li a:hover {
             color: var(--primary);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
         }
 
         .mobile-menu-btn {
@@ -112,17 +136,20 @@
             color: white;
             padding: 150px 0 100px;
             text-align: center;
+            position: relative;
         }
 
         .hero h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
         }
 
         .hero p {
             font-size: 1.2rem;
             max-width: 700px;
             margin: 0 auto 30px;
+            animation: fadeInUp 1s ease;
         }
 
         .btn {
@@ -136,11 +163,13 @@
             transition: all 0.3s;
             border: none;
             cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .btn:hover {
             background-color: #e6a532;
             transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
 
         /* About Section */
@@ -194,12 +223,25 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateX(20px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+        .about-image.animate {
+            transform: translateX(0);
+            opacity: 1;
         }
 
         .about-image img {
             width: 100%;
             height: auto;
             display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
         }
 
         /* Services Section */
@@ -222,10 +264,19 @@
             transition: transform 0.3s;
             text-align: center;
             padding: 30px 20px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .service-card.animate {
+            transform: translateY(0);
+            opacity: 1;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
         .service-icon {
@@ -296,12 +347,21 @@
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
         }
 
         .form-group textarea {
@@ -412,6 +472,12 @@
             visibility: hidden;
             transition: all 0.3s;
             z-index: 999;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-to-top:hover {
+            background-color: var(--secondary);
+            transform: translateY(-5px);
         }
 
         .back-to-top.active {
@@ -434,6 +500,14 @@
         .director-image {
             flex: 1;
             text-align: center;
+            transform: translateX(-20px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+        .director-image.animate {
+            transform: translateX(0);
+            opacity: 1;
         }
 
         .director-image img {
@@ -442,10 +516,19 @@
             border-radius: 50%;
             object-fit: cover;
             border: 5px solid var(--primary);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         .director-details {
             flex: 2;
+            transform: translateX(20px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+        .director-details.animate {
+            transform: translateX(0);
+            opacity: 1;
         }
 
         .director-details h3 {
@@ -459,6 +542,244 @@
             color: var(--secondary);
             margin-bottom: 20px;
             font-weight: 600;
+        }
+
+        /* Maintenance Popup Styles */
+        .maintenance-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a4b8c 0%, #0d2b52 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .maintenance-popup.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .maintenance-content {
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 1s ease;
+        }
+
+        .maintenance-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .maintenance-logo img {
+            height: 70px;
+            margin-right: 15px;
+        }
+
+        .maintenance-logo h1 {
+            font-size: 2.2rem;
+            color: white;
+        }
+
+        .maintenance-logo span {
+            color: var(--secondary);
+        }
+
+        .maintenance-icon {
+            font-size: 5rem;
+            color: var(--secondary);
+            margin: 30px 0;
+            animation: bounce 2s infinite;
+        }
+
+        .maintenance-popup h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .maintenance-popup p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .progress-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 40px auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            height: 12px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 65%;
+            background: var(--secondary);
+            border-radius: 10px;
+            animation: progress 2s ease-in-out infinite alternate;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px 0;
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            min-width: 80px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .countdown-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            margin-top: 5px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .maintenance-contact {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .maintenance-contact h3 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+            color: var(--secondary);
+        }
+
+        .maintenance-contact-details {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .maintenance-contact-item {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px 20px;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        .maintenance-contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .maintenance-contact-item i {
+            color: var(--secondary);
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 70%;
+            left: 80%;
+            animation-delay: -5s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 50%;
+            left: 5%;
+            animation-delay: -10s;
+        }
+
+        .floating-element:nth-child(4) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 85%;
+            animation-delay: -7s;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes progress {
+            0% { width: 65%; }
+            100% { width: 70%; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
         }
 
         /* Responsive Styles */
@@ -516,6 +837,36 @@
             .hero p {
                 font-size: 1rem;
             }
+            
+            .maintenance-content {
+                padding: 30px 20px;
+            }
+            
+            .maintenance-popup h2 {
+                font-size: 2rem;
+            }
+            
+            .maintenance-popup p {
+                font-size: 1.1rem;
+            }
+            
+            .countdown {
+                gap: 10px;
+            }
+            
+            .countdown-item {
+                padding: 15px;
+                min-width: 70px;
+            }
+            
+            .countdown-value {
+                font-size: 2rem;
+            }
+            
+            .maintenance-contact-details {
+                flex-direction: column;
+                align-items: center;
+            }
         }
 
         @media (max-width: 576px) {
@@ -530,10 +881,92 @@
             .services-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .maintenance-logo h1 {
+                font-size: 1.8rem;
+            }
+            
+            .maintenance-popup h2 {
+                font-size: 1.8rem;
+            }
+            
+            .countdown {
+                flex-wrap: wrap;
+            }
+            
+            .maintenance-icon {
+                font-size: 4rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Maintenance Popup -->
+    <div class="maintenance-popup active" id="maintenancePopup">
+        <div class="floating-elements">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+
+        <div class="maintenance-content">
+            <div class="maintenance-logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMTAwIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzFhNGI4YyIvPjx0ZXh0IHg9IjEwMCIgeT0iNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZmlsbD0iI2Y4YjczOSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U1RFTExBUjwvdGV4dD48dGV4dCB4PSIxMDAiIHk9Ijg1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkVWRU5UPC90ZXh0Pjwvc3ZnPg==" alt="Stellar Event Logo">
+                <h1>Stellar <span>Event</span></h1>
+            </div>
+
+            <div class="maintenance-icon">
+                <i class="fas fa-tools"></i>
+            </div>
+
+            <h2>We'll be back shortly!</h2>
+            
+            <p>The page you're looking for is currently under maintenance and will be back soon. We're working hard to improve your experience and will be ready before you know it.</p>
+
+            <div class="progress-container">
+                <div class="progress-bar"></div>
+            </div>
+
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-value" id="days">28</div>
+                    <div class="countdown-label">Days</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="hours">00</div>
+                    <div class="countdown-label">Hours</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="minutes">00</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-value" id="seconds">00</div>
+                    <div class="countdown-label">Seconds</div>
+                </div>
+            </div>
+
+            <button class="btn" id="closeMaintenance">
+                <i class="fas fa-arrow-left"></i> GO BACK
+            </button>
+
+            <div class="maintenance-contact">
+                <h3>Need immediate assistance?</h3>
+                <div class="maintenance-contact-details">
+                    <div class="maintenance-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>07554338933</span>
+                    </div>
+                    <div class="maintenance-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>stellarevent2k@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -646,7 +1079,9 @@
                 <h2>Our Director</h2>
             </div>
             <div class="director-container">
-               
+                <div class="director-image">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Mayank Khale">
+                </div>
                 <div class="director-details">
                     <h3>Mayank Khale</h3>
                     <div class="director-title">Director, Stellar Event</div>
@@ -797,7 +1232,7 @@
                     <h3>Contact Info</h3>
                     <div class="contact-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <p>LB 18, Mansarovar Complex, MP Nagar, Bhopal</p>
+                        <p>GB 18, Mansarovar Complex, MP Nagar, Bhopal</p>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-phone"></i>
@@ -846,6 +1281,14 @@
             } else {
                 backToTopBtn.classList.remove('active');
             }
+            
+            // Header scroll effect
+            const header = document.querySelector('header');
+            if (window.pageYOffset > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
         
         backToTopBtn.addEventListener('click', () => {
@@ -887,11 +1330,97 @@
                 if(targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
+                       behavior: 'smooth'
                     });
                 }
             });
         });
+        
+        // Scroll animations
+        function checkScroll() {
+            const aboutImage = document.querySelector('.about-image');
+            const serviceCards = document.querySelectorAll('.service-card');
+            const directorImage = document.querySelector('.director-image');
+            const directorDetails = document.querySelector('.director-details');
+            
+            // About image animation
+            if (isElementInViewport(aboutImage)) {
+                aboutImage.classList.add('animate');
+            }
+            
+            // Service cards animation
+            serviceCards.forEach((card, index) => {
+                if (isElementInViewport(card)) {
+                    setTimeout(() => {
+                        card.classList.add('animate');
+                    }, index * 200);
+                }
+            });
+            
+            // Director section animation
+            if (isElementInViewport(directorImage)) {
+                directorImage.classList.add('animate');
+                directorDetails.classList.add('animate');
+            }
+        }
+        
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8
+            );
+        }
+        
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+        
+        // Maintenance Popup Functionality
+        const maintenancePopup = document.getElementById('maintenancePopup');
+        const closeMaintenanceBtn = document.getElementById('closeMaintenance');
+        
+        // Close maintenance popup when button is clicked
+        closeMaintenanceBtn.addEventListener('click', () => {
+            maintenancePopup.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        });
+        
+        // Maintenance Countdown Timer (4 weeks)
+        function updateMaintenanceCountdown() {
+            const daysElement = document.getElementById('days');
+            const hoursElement = document.getElementById('hours');
+            const minutesElement = document.getElementById('minutes');
+            const secondsElement = document.getElementById('seconds');
+            
+            // Set maintenance end date to 4 weeks from now
+            const endDate = new Date();
+            endDate.setDate(endDate.getDate() + 28); // 4 weeks = 28 days
+            
+            const now = new Date().getTime();
+            const distance = endDate - now;
+            
+            if (distance < 0) {
+                // Maintenance is over
+                daysElement.textContent = '00';
+                hoursElement.textContent = '00';
+                minutesElement.textContent = '00';
+                secondsElement.textContent = '00';
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            daysElement.textContent = days.toString().padStart(2, '0');
+            hoursElement.textContent = hours.toString().padStart(2, '0');
+            minutesElement.textContent = minutes.toString().padStart(2, '0');
+            secondsElement.textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        // Update maintenance countdown every second
+        setInterval(updateMaintenanceCountdown, 1000);
+        updateMaintenanceCountdown(); // Initial call
     </script>
 </body>
 </html>
