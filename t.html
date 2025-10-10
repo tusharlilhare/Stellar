@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar Event - Professional Event Management</title>
+    <meta name="description" content="Stellar Event - Professional event management services for corporate events, weddings, exhibitions, and more. Creating memorable experiences in Bhopal.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1a4b8c;
+            --secondary: #f8b739;
+            --light: #f5f7fa;
+            --dark: #333;
+            --success: #28a745;
+            --hero-overlay: rgba(0, 0, 0, 0.5);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 5px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--hero-overlay);
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: var(--dark);
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            background-color: #e6a532;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Image Rotator Section */
+        .image-rotator {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .rotator-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .rotator-slides {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .rotator-slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .rotator-slide img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+            color: white;
+            padding: 30px 20px 20px;
+            text-align: center;
+        }
+
+        .slide-caption h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .rotator-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            padding: 0 20px;
+        }
+
+        .rotator-btn {
+            background: rgba(255, 255, 255, 0.7);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .rotator-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        .rotator-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .indicator.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* Additional Image Gallery Section */
+        .image-gallery {
+            padding: 80px 0;
+            background-color: #f0f4f8;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            height: 300px;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 20px;
+            text-align: center;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .gallery-caption h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateX(20px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+        .about-image.animate {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: #f0f4f8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+            text-align: center;
+            padding: 30px 20px;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .service-card.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .contact-container {
+            display: flex;
+            gap: 40px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .contact-item i {
+            color: var(--primary);
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+
+        .contact-form {
+            flex: 1;
+            background-color: #f0f4f8;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary);
+            bottom: 0;
+            left: 0;
+        }
+
+        .footer-col p {
+            margin-bottom: 15px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #ddd;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 999;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .back-to-top:hover {
+            background-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Director Info Section */
+        .director-info {
+            padding: 80px 0;
+            background-color: #f0f4f8;
+        }
+
+        .director-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .director-image {
+            flex: 1;
+            text-align: center;
+            transform: translateX(-20px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+        .director-image.animate {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .director-image img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .director-details {
+            flex: 2;
+            transform: translateX(20px);
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+        .director-details.animate {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .director-details h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .director-title {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        /* Theme Changer */
+        .theme-changer {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            background: white;
+            border-radius: 10px 0 0 10px;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        .theme-option {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            position: relative;
+        }
+
+        .theme-option.active::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .theme-option:hover {
+            transform: scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content, .contact-container, .director-container {
+                flex-direction: column;
+            }
+            
+            .director-image {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+                width: 100%;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            nav {
+                display: none;
+                width: 100%;
+                margin-top: 15px;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .rotator-slide img {
+                height: 300px;
+            }
+            
+            .rotator-btn {
+                width: 40px;
+                height: 40px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .theme-changer {
+                top: auto;
+                bottom: 80px;
+                transform: none;
+                flex-direction: row;
+                border-radius: 10px 10px 0 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 120px 0 80px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .rotator-slide img {
+                height: 250px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Theme Changer -->
+    <div class="theme-changer">
+        <div class="theme-option active" style="background: linear-gradient(135deg, #6a11cb, #2575fc);" data-theme="default"></div>
+        <div class="theme-option" style="background: linear-gradient(135deg, #11998e, #38ef7d);" data-theme="green"></div>
+        <div class="theme-option" style="background: linear-gradient(135deg, #fc466b, #3f5efb);" data-theme="pink"></div>
+        <div class="theme-option" style="background: linear-gradient(135deg, #fdbb2d, #22c1c3);" data-theme="sunset"></div>
+        <div class="theme-option" style="background: linear-gradient(135deg, #8e2de2, #4a00e0);" data-theme="purple"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMTAwIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzFhNGI4YyIvPjx0ZXh0IHg9IjEwMCIgeT0iNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZmlsbD0iI2Y4YjczOSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U1RFTExBUjwvdGV4dD48dGV4dCB4PSIxMDAiIHk9Ijg1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkVWRU5UPC90ZXh0Pjwvc3ZnPg==" alt="Stellar Event Logo">
+                <h1>Stellar <span>Event</span></h1>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#director">Director</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Welcome to Stellar Event</h2>
+            <p>Professional event management services for corporate events, weddings, exhibitions, and more. Creating memorable experiences that exceed expectations.</p>
+            <a href="#contact" class="btn">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- Image Rotator Section -->
+    <section class="image-rotator" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Gallery</h2>
+            </div>
+            <div class="rotator-container">
+                <div class="rotator-slides">
+                    <div class="rotator-slide">
+                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Corporate Event">
+                        <div class="slide-caption">
+                            <h3>Corporate Events</h3>
+                            <p>Professional event management for conferences and seminars</p>
+                        </div>
+                    </div>
+                    <div class="rotator-slide">
+                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Wedding Event">
+                        <div class="slide-caption">
+                            <h3>Wedding Celebrations</h3>
+                            <p>Creating unforgettable moments for your special day</p>
+                        </div>
+                    </div>
+                    <div class="rotator-slide">
+                        <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Product Launch">
+                        <div class="slide-caption">
+                            <h3>Product Launches</h3>
+                            <p>Strategic planning for successful product introductions</p>
+                        </div>
+                    </div>
+                    <div class="rotator-slide">
+                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Exhibition">
+                        <div class="slide-caption">
+                            <h3>Exhibitions</h3>
+                            <p>Comprehensive exhibition management from concept to execution</p>
+                        </div>
+                    </div>
+                    <div class="rotator-slide">
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="New Year Event">
+                        <div class="slide-caption">
+                            <h3>New Year Events</h3>
+                            <p>Spectacular celebrations to welcome the new year</p>
+                        </div>
+                    </div>
+                    <div class="rotator-slide">
+                        <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Annual Event">
+                        <div class="slide-caption">
+                            <h3>Annual Events</h3>
+                            <p>Planning and execution of annual corporate events</p>
+                        </div>
+                    </div>
+                    <div class="rotator-slide">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Conference">
+                        <div class="slide-caption">
+                            <h3>Conferences</h3>
+                            <p>Professional conference management with attention to detail</p>
+                        </div>
+                    </div>
+                    <div class="rotator-slide">
+                        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Birthday Party">
+                        <div class="slide-caption">
+                            <h3>Birthday Parties</h3>
+                            <p>Creating memorable birthday celebrations for all ages</p>
+                        </div>
+                    </div>
+                    <div class="rotator-slide">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Award Ceremony">
+                        <div class="slide-caption">
+                            <h3>Award Ceremonies</h3>
+                            <p>Elegant and prestigious award ceremonies</p>
+                        </div>
+                    </div>
+                    <div class="rotator-slide">
+                        <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Team Building">
+                        <div class="slide-caption">
+                            <h3>Team Building Events</h3>
+                            <p>Engaging activities to strengthen team bonds</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="rotator-controls">
+                    <button class="rotator-btn prev-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="rotator-btn next-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="rotator-indicators">
+                    <div class="indicator active" data-index="0"></div>
+                    <div class="indicator" data-index="1"></div>
+                    <div class="indicator" data-index="2"></div>
+                    <div class="indicator" data-index="3"></div>
+                    <div class="indicator" data-index="4"></div>
+                    <div class="indicator" data-index="5"></div>
+                    <div class="indicator" data-index="6"></div>
+                    <div class="indicator" data-index="7"></div>
+                    <div class="indicator" data-index="8"></div>
+                    <div class="indicator" data-index="9"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Image Gallery Section -->
+    <section class="image-gallery" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Portfolio</h2>
+                <p>Explore some of our most successful events and memorable moments</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury Wedding">
+                    <div class="gallery-caption">
+                        <h3>Luxury Wedding</h3>
+                        <p>Elegant wedding celebration with premium decor</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1556760544-74068565f05c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Corporate Gala">
+                    <div class="gallery-caption">
+                        <h3>Corporate Gala</h3>
+                        <p>Sophisticated corporate evening event</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Product Launch">
+                    <div class="gallery-caption">
+                        <h3>Product Launch</h3>
+                        <p>Innovative product reveal event</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Charity Event">
+                    <div class="gallery-caption">
+                        <h3>Charity Event</h3>
+                        <p>Fundraising gala for a noble cause</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Festival Celebration">
+                    <div class="gallery-caption">
+                        <h3>Festival Celebration</h3>
+                        <p>Vibrant cultural festival organization</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Stellar Event</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Creating Unforgettable Experiences</h3>
+                    <p>Stellar Event is a premier event management company based in Bhopal, specializing in creating exceptional events that leave a lasting impression. With years of experience in the industry, we have built a reputation for excellence and attention to detail.</p>
+                    <p>Our team of dedicated professionals works closely with clients to understand their vision and bring it to life. From intimate gatherings to large-scale corporate functions, we handle every aspect of event planning and execution with precision and creativity.</p>
+                    <p>We believe that every event is unique and deserves a personalized approach. Our commitment to quality and customer satisfaction has made us the preferred choice for event management in Central India.</p>
+                    <a href="#services" class="btn">Our Services</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Event Management">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Corporate Events</h3>
+                    <p>Professional event management for conferences, seminars, product launches, and corporate gatherings.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <h3>Weddings</h3>
+                    <p>Complete wedding planning and coordination to make your special day truly memorable.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Annual Events</h3>
+                    <p>Planning and execution of annual corporate events, parties, and celebrations.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Product Launches</h3>
+                    <p>Strategic planning for successful product launches that create buzz and excitement.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <h3>Exhibitions</h3>
+                    <p>Comprehensive exhibition management services from concept to execution.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>New Year Events</h3>
+                    <p>Spectacular New Year celebrations and parties tailored to your requirements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Director Info Section -->
+    <section class="director-info" id="director">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Director</h2>
+            </div>
+            <div class="director-container">
+                <div class="director-image">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Mayank Khale">
+                </div>
+                <div class="director-details">
+                    <h3>Mayank Khale</h3>
+                    <div class="director-title">Director, Stellar Event</div>
+                    <p>With a passion for creating exceptional experiences and a keen eye for detail, Mayank Khale leads the Stellar Event team with vision and expertise. His dedication to client satisfaction and innovative approach to event management have established Stellar Event as a trusted name in the industry.</p>
+                    <p>Under his leadership, the company has successfully executed numerous high-profile events, earning a reputation for reliability, creativity, and excellence.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone Numbers</h4>
+                                <p>07554338933 | +917974907160</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>stellarevent2k@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>Ready to plan your next event? Contact us today to discuss your requirements and let us create something extraordinary for you.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Address</h4>
+                                <p>GB 18, Mansarovar Complex, MP Nagar, Bhopal</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>07554338933 | +917974907160</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>stellarevent2k@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-globe"></i>
+                            <div>
+                                <h4>Website</h4>
+                                <p>https://new-stellar-event-bhopal.business.site/</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="event-type">Event Type</label>
+                            <select id="event-type" required>
+                                <option value="">Select Event Type</option>
+                                <option value="corporate">Corporate Event</option>
+                                <option value="wedding">Wedding</option>
+                                <option value="product-launch">Product Launch</option>
+                                <option value="exhibition">Exhibition</option>
+                                <option value="annual-event">Annual Event</option>
+                                <option value="new-year">New Year Event</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Stellar Event</h3>
+                    <p>Professional event management services creating unforgettable experiences for corporate events, weddings, exhibitions, and more.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#director">Our Director</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Corporate Events</a></li>
+                        <li><a href="#">Weddings</a></li>
+                        <li><a href="#">Product Launches</a></li>
+                        <li><a href="#">Exhibitions</a></li>
+                        <li><a href="#">Annual Events</a></li>
+                        <li><a href="#">New Year Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>GB 18, Mansarovar Complex, MP Nagar, Bhopal</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>07554338933 | +917974907160</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>stellarevent2k@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Stellar Event. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+            });
+        });
+        
+        // Back to Top Button
+        const backToTopBtn = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+            
+            // Header scroll effect
+            const header = document.querySelector('header');
+            if (window.pageYOffset > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Contact Form Submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const eventType = document.getElementById('event-type').value;
+            const message = document.getElementById('message').value;
+            
+            // In a real application, you would send this data to a server
+            // For this example, we'll just show an alert
+            alert(`Thank you, ${name}! Your message about ${eventType} has been received. We will contact you at ${email} soon.`);
+            
+            // Reset the form
+            contactForm.reset();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                       behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Scroll animations
+        function checkScroll() {
+            const aboutImage = document.querySelector('.about-image');
+            const serviceCards = document.querySelectorAll('.service-card');
+            const directorImage = document.querySelector('.director-image');
+            const directorDetails = document.querySelector('.director-details');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            // About image animation
+            if (isElementInViewport(aboutImage)) {
+                aboutImage.classList.add('animate');
+            }
+            
+            // Service cards animation
+            serviceCards.forEach((card, index) => {
+                if (isElementInViewport(card)) {
+                    setTimeout(() => {
+                        card.classList.add('animate');
+                    }, index * 200);
+                }
+            });
+            
+            // Director section animation
+            if (isElementInViewport(directorImage)) {
+                directorImage.classList.add('animate');
+                directorDetails.classList.add('animate');
+            }
+            
+            // Gallery items animation
+            galleryItems.forEach((item, index) => {
+                if (isElementInViewport(item)) {
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+        }
+        
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8
+            );
+        }
+        
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+        
+        // Image Rotator Functionality
+        const rotatorSlides = document.querySelector('.rotator-slides');
+        const slides = document.querySelectorAll('.rotator-slide');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        const indicators = document.querySelectorAll('.indicator');
+        
+        let currentSlide = 0;
+        const slideCount = slides.length;
+        let slideInterval;
+        
+        // Function to go to a specific slide
+        function goToSlide(index) {
+            if (index < 0) {
+                currentSlide = slideCount - 1;
+            } else if (index >= slideCount) {
+                currentSlide = 0;
+            } else {
+                currentSlide = index;
+            }
+            
+            rotatorSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update indicators
+            indicators.forEach((indicator, i) => {
+                if (i === currentSlide) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+        
+        // Function to go to next slide
+        function nextSlide() {
+            goToSlide(currentSlide + 1);
+        }
+        
+        // Function to go to previous slide
+        function prevSlide() {
+            goToSlide(currentSlide - 1);
+        }
+        
+        // Start automatic sliding
+        function startSlideShow() {
+            slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+        }
+        
+        // Stop automatic sliding
+        function stopSlideShow() {
+            clearInterval(slideInterval);
+        }
+        
+        // Event listeners for buttons
+        nextBtn.addEventListener('click', () => {
+            stopSlideShow();
+            nextSlide();
+            startSlideShow();
+        });
+        
+        prevBtn.addEventListener('click', () => {
+            stopSlideShow();
+            prevSlide();
+            startSlideShow();
+        });
+        
+        // Event listeners for indicators
+        indicators.forEach(indicator => {
+            indicator.addEventListener('click', () => {
+                const index = parseInt(indicator.getAttribute('data-index'));
+                stopSlideShow();
+                goToSlide(index);
+                startSlideShow();
+            });
+        });
+        
+        // Pause on hover
+        const rotatorContainer = document.querySelector('.rotator-container');
+        rotatorContainer.addEventListener('mouseenter', stopSlideShow);
+        rotatorContainer.addEventListener('mouseleave', startSlideShow);
+        
+        // Initialize the rotator
+        startSlideShow();
+
+        // Theme Changer Functionality
+        const themeOptions = document.querySelectorAll('.theme-option');
+        
+        // Define themes
+        const themes = {
+            default: {
+                primary: '#1a4b8c',
+                secondary: '#f8b739',
+                light: '#f5f7fa',
+                dark: '#333',
+                heroOverlay: 'rgba(0, 0, 0, 0.5)'
+            },
+            green: {
+                primary: '#11998e',
+                secondary: '#38ef7d',
+                light: '#f0f9f7',
+                dark: '#2c3e50',
+                heroOverlay: 'rgba(0, 0, 0, 0.5)'
+            },
+            pink: {
+                primary: '#fc466b',
+                secondary: '#3f5efb',
+                light: '#fdf2f5',
+                dark: '#2c3e50',
+                heroOverlay: 'rgba(0, 0, 0, 0.5)'
+            },
+            sunset: {
+                primary: '#fdbb2d',
+                secondary: '#22c1c3',
+                light: '#fff9f0',
+                dark: '#2c3e50',
+                heroOverlay: 'rgba(0, 0, 0, 0.5)'
+            },
+            purple: {
+                primary: '#8e2de2',
+                secondary: '#4a00e0',
+                light: '#f5f0ff',
+                dark: '#2c3e50',
+                heroOverlay: 'rgba(0, 0, 0, 0.5)'
+            }
+        };
+        
+        // Apply theme
+        function applyTheme(themeName) {
+            const theme = themes[themeName];
+            document.documentElement.style.setProperty('--primary', theme.primary);
+            document.documentElement.style.setProperty('--secondary', theme.secondary);
+            document.documentElement.style.setProperty('--light', theme.light);
+            document.documentElement.style.setProperty('--dark', theme.dark);
+            document.documentElement.style.setProperty('--hero-overlay', theme.heroOverlay);
+            
+            // Update active state
+            themeOptions.forEach(option => {
+                if (option.getAttribute('data-theme') === themeName) {
+                    option.classList.add('active');
+                } else {
+                    option.classList.remove('active');
+                }
+            });
+            
+            // Save to localStorage
+            localStorage.setItem('selectedTheme', themeName);
+        }
+        
+        // Event listeners for theme options
+        themeOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const themeName = option.getAttribute('data-theme');
+                applyTheme(themeName);
+            });
+        });
+        
+        // Load saved theme
+        const savedTheme = localStorage.getItem('selectedTheme') || 'default';
+        applyTheme(savedTheme);
+    </script>
+</body>
+</html>

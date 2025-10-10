@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stellar Event - Professional Event Management</title>
-    <meta name="description" content="Stellar Event - Professional event management services for corporate events, weddings, exhibitions, and more. Creating memorable experiences in Bhopal.">
+    <title>New Stellar Event - Event Management Services</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Reset and Base Styles */
@@ -14,113 +13,95 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
+        
         :root {
-            --primary: #1a4b8c;
-            --secondary: #f8b739;
-            --light: #f5f7fa;
+            --primary: #8a2be2;
+            --primary-dark: #6a1cb0;
+            --secondary: #ff6b6b;
             --dark: #333;
-            --success: #28a745;
-            --hero-overlay: rgba(0, 0, 0, 0.5);
+            --light: #f8f9fa;
+            --gray: #6c757d;
         }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
+        
         body {
-            line-height: 1.6;
             color: var(--dark);
+            line-height: 1.6;
             background-color: var(--light);
             overflow-x: hidden;
-            transition: all 0.3s ease;
         }
-
+        
         .container {
             width: 90%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
         }
-
+        
         /* Header Styles */
         header {
             background-color: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            position: fixed;
-            width: 100%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
             top: 0;
             z-index: 1000;
             transition: all 0.3s ease;
         }
-
-        header.scrolled {
-            padding: 5px 0;
-        }
-
+        
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 0;
-            transition: all 0.3s ease;
         }
-
+        
         .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
             display: flex;
             align-items: center;
         }
-
-        .logo img {
-            height: 50px;
+        
+        .logo i {
             margin-right: 10px;
         }
-
-        .logo h1 {
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
-
-        .logo span {
-            color: var(--secondary);
-        }
-
-        nav ul {
+        
+        .nav-menu {
             display: flex;
             list-style: none;
         }
-
-        nav ul li {
+        
+        .nav-menu li {
             margin-left: 25px;
         }
-
-        nav ul li a {
+        
+        .nav-menu a {
             text-decoration: none;
             color: var(--dark);
             font-weight: 500;
             transition: color 0.3s;
             position: relative;
         }
-
-        nav ul li a::after {
+        
+        .nav-menu a:after {
             content: '';
             position: absolute;
             width: 0;
             height: 2px;
             bottom: -5px;
             left: 0;
-            background-color: var(--secondary);
+            background-color: var(--primary);
             transition: width 0.3s;
         }
-
-        nav ul li a:hover {
+        
+        .nav-menu a:hover {
             color: var(--primary);
         }
-
-        nav ul li a:hover::after {
+        
+        .nav-menu a:hover:after {
             width: 100%;
         }
-
+        
         .mobile-menu-btn {
             display: none;
             background: none;
@@ -129,1050 +110,771 @@
             cursor: pointer;
             color: var(--primary);
         }
-
-        /* Hero Section */
+        
+        /* Hero Section with Image Slider */
         .hero {
-            background: url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 150px 0 100px;
-            text-align: center;
             position: relative;
+            height: 85vh;
+            overflow: hidden;
         }
-
-        .hero::before {
-            content: '';
+        
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .slide {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: var(--hero-overlay);
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
         }
-
-        .hero .container {
-            position: relative;
-            z-index: 1;
+        
+        .slide.active {
+            opacity: 1;
         }
-
-        .hero h2 {
-            font-size: 2.5rem;
+        
+        .slide-1 {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./programd.jpeg');
+        }
+        
+        .slide-2 {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./miting.jpeg');
+        }
+        
+        .slide-3 {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./merij3.jpeg');
+        }
+        
+        .slide-4 {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('./merij.jpeg');
+        }
+        
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 10;
+            width: 90%;
+            max-width: 800px;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
             margin-bottom: 20px;
-            animation: fadeInDown 1s ease;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
             animation: fadeInUp 1s ease;
         }
-
-        .btn {
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            animation: fadeInUp 1.2s ease;
+        }
+        
+        .cta-button {
             display: inline-block;
-            background-color: var(--secondary);
-            color: var(--dark);
+            background-color: var(--primary);
+            color: white;
             padding: 12px 30px;
-            border-radius: 5px;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1.4s ease;
+            box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
         }
-
-        .btn:hover {
-            background-color: #e6a532;
+        
+        .cta-button:hover {
+            background-color: var(--primary-dark);
             transform: translateY(-3px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 20px rgba(138, 43, 226, 0.4);
         }
-
-        /* Image Rotator Section */
-        .image-rotator {
-            padding: 80px 0;
-            background-color: white;
-        }
-
-        .rotator-container {
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .rotator-slides {
-            display: flex;
-            transition: transform 0.5s ease;
-        }
-
-        .rotator-slide {
-            min-width: 100%;
-            position: relative;
-        }
-
-        .rotator-slide img {
-            width: 100%;
-            height: 500px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .slide-caption {
+        
+        .slider-nav {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-            color: white;
-            padding: 30px 20px 20px;
-            text-align: center;
-        }
-
-        .slide-caption h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .rotator-controls {
-            position: absolute;
-            top: 50%;
-            width: 100%;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-            padding: 0 20px;
-        }
-
-        .rotator-btn {
-            background: rgba(255, 255, 255, 0.7);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 1.2rem;
-            color: var(--primary);
-        }
-
-        .rotator-btn:hover {
-            background: white;
-            transform: scale(1.1);
-        }
-
-        .rotator-indicators {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
             gap: 10px;
+            z-index: 10;
         }
-
-        .indicator {
+        
+        .slider-dot {
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: #ddd;
+            background-color: rgba(255,255,255,0.5);
             cursor: pointer;
-            transition: all 0.3s;
+            transition: background-color 0.3s;
         }
-
-        .indicator.active {
-            background: var(--primary);
-            transform: scale(1.2);
-        }
-
-        /* Additional Image Gallery Section */
-        .image-gallery {
-            padding: 80px 0;
-            background-color: #f0f4f8;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .gallery-item {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            height: 300px;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-            color: white;
-            padding: 20px;
-            text-align: center;
-            transform: translateY(100%);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover .gallery-caption {
-            transform: translateY(0);
-        }
-
-        .gallery-caption h3 {
-            font-size: 1.2rem;
-            margin-bottom: 5px;
-        }
-
-        /* About Section */
-        .about {
-            padding: 80px 0;
+        
+        .slider-dot.active {
             background-color: white;
         }
-
+        
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+        
         .section-title {
             text-align: center;
             margin-bottom: 50px;
         }
-
+        
         .section-title h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--primary);
+            margin-bottom: 15px;
             position: relative;
             display: inline-block;
-            padding-bottom: 10px;
         }
-
-        .section-title h2::after {
+        
+        .section-title h2:after {
             content: '';
             position: absolute;
             width: 70px;
             height: 3px;
-            background-color: var(--secondary);
-            bottom: 0;
+            background-color: var(--primary);
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
         }
-
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 20px auto 0;
+        }
+        
+        /* About Section */
         .about-content {
             display: flex;
             align-items: center;
-            gap: 40px;
+            gap: 50px;
         }
-
+        
         .about-text {
             flex: 1;
         }
-
+        
         .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
             color: var(--primary);
+            margin: 20px 0 10px;
+            font-size: 1.5rem;
         }
-
+        
         .about-image {
             flex: 1;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transform: translateX(20px);
-            opacity: 0;
-            transition: all 0.8s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.5s;
         }
-
-        .about-image.animate {
-            transform: translateX(0);
-            opacity: 1;
+        
+        .about-image:hover {
+            transform: translateY(-10px);
         }
-
+        
         .about-image img {
             width: 100%;
             height: auto;
             display: block;
-            transition: transform 0.5s ease;
         }
-
-        .about-image:hover img {
-            transform: scale(1.05);
-        }
-
+        
         /* Services Section */
-        .services {
-            padding: 80px 0;
-            background-color: #f0f4f8;
-        }
-
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
         }
-
+        
         .service-card {
             background-color: white;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s;
-            text-align: center;
-            padding: 30px 20px;
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.5s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
         }
-
-        .service-card.animate {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
+        
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
-
-        .service-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
+        
+        .service-image {
+            height: 200px;
+            overflow: hidden;
         }
-
-        .service-card h3 {
-            font-size: 1.3rem;
+        
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-image img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
             margin-bottom: 15px;
             color: var(--primary);
         }
-
-        /* Contact Section */
-        .contact {
-            padding: 80px 0;
-            background-color: white;
+        
+        .service-btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 15px;
+            transition: background-color 0.3s;
         }
-
+        
+        .service-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .gallery-item {
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Amenities Section */
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .amenity-item {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .amenity-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .amenity-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        /* Contact Section */
         .contact-container {
             display: flex;
-            gap: 40px;
+            gap: 50px;
         }
-
-        .contact-info {
-            flex: 1;
-        }
-
-        .contact-info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: var(--primary);
-        }
-
-        .contact-details {
-            margin-bottom: 30px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 15px;
-        }
-
-        .contact-item i {
-            color: var(--primary);
-            margin-right: 10px;
-            margin-top: 5px;
-        }
-
+        
         .contact-form {
             flex: 1;
-            background-color: #f0f4f8;
+            background-color: white;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
-
+        
         .form-group {
             margin-bottom: 20px;
         }
-
+        
         .form-group label {
             display: block;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-weight: 500;
         }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
+        
+        .form-control {
             width: 100%;
-            padding: 10px;
+            padding: 12px 15px;
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 1rem;
             transition: border-color 0.3s;
         }
-
-        .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
-            border-color: var(--primary);
+        
+        .form-control:focus {
             outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
         }
-
-        .form-group textarea {
-            height: 150px;
-            resize: vertical;
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
         }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary);
-            color: white;
-            padding: 50px 0 20px;
+        
+        .checkbox-group input {
+            margin-top: 5px;
         }
-
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-details {
             margin-bottom: 30px;
         }
-
-        .footer-col h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            position: relative;
-            padding-bottom: 10px;
-        }
-
-        .footer-col h3::after {
-            content: '';
-            position: absolute;
-            width: 50px;
-            height: 2px;
-            background-color: var(--secondary);
-            bottom: 0;
-            left: 0;
-        }
-
-        .footer-col p {
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
             margin-bottom: 15px;
         }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+        
+        .contact-icon {
             width: 40px;
             height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
+            background-color: var(--primary);
             color: white;
-            transition: all 0.3s;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
         }
-
-        .social-links a:hover {
-            background-color: var(--secondary);
-            transform: translateY(-3px);
+        
+        .areas-covered {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
-
+        
+        .areas-covered h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .areas-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .area-tag {
+            background-color: #f0f0f0;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+        
+        .area-tag:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            flex: 1;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
         .footer-links {
             list-style: none;
         }
-
+        
         .footer-links li {
             margin-bottom: 10px;
         }
-
+        
         .footer-links a {
             color: #ddd;
             text-decoration: none;
             transition: color 0.3s;
         }
-
+        
         .footer-links a:hover {
-            color: var(--secondary);
+            color: var(--primary);
         }
-
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-size: 0.9rem;
-            color: #ddd;
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
         }
-
-        /* Back to Top Button */
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 50%;
+        
+        .social-icons a {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            z-index: 999;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .back-to-top:hover {
-            background-color: var(--secondary);
-            transform: translateY(-5px);
-        }
-
-        .back-to-top.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Director Info Section */
-        .director-info {
-            padding: 80px 0;
-            background-color: #f0f4f8;
-        }
-
-        .director-container {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .director-image {
-            flex: 1;
-            text-align: center;
-            transform: translateX(-20px);
-            opacity: 0;
-            transition: all 0.8s ease;
-        }
-
-        .director-image.animate {
-            transform: translateX(0);
-            opacity: 1;
-        }
-
-        .director-image img {
-            width: 200px;
-            height: 200px;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
             border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--primary);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .director-details {
-            flex: 2;
-            transform: translateX(20px);
-            opacity: 0;
-            transition: all 0.8s ease;
-        }
-
-        .director-details.animate {
-            transform: translateX(0);
-            opacity: 1;
-        }
-
-        .director-details h3 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
-
-        .director-title {
-            font-size: 1.2rem;
-            color: var(--secondary);
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-
-        /* Theme Changer */
-        .theme-changer {
-            position: fixed;
-            top: 50%;
-            right: 0;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            background: white;
-            border-radius: 10px 0 0 10px;
-            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            overflow: hidden;
-        }
-
-        .theme-option {
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: none;
-            position: relative;
-        }
-
-        .theme-option.active::after {
-            content: '✓';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             color: white;
-            font-weight: bold;
-            font-size: 14px;
+            transition: all 0.3s;
         }
-
-        .theme-option:hover {
-            transform: scale(1.1);
+        
+        .social-icons a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
         }
-
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
         /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-
+        
         /* Responsive Styles */
         @media (max-width: 992px) {
-            .about-content, .contact-container, .director-container {
+            .about-content, .contact-container {
                 flex-direction: column;
             }
             
-            .director-image {
-                margin-bottom: 30px;
+            .about-image, .about-text, .contact-form, .contact-info {
+                width: 100%;
             }
         }
-
+        
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
-                padding: 15px 0;
-            }
-            
-            .logo {
-                margin-bottom: 15px;
-            }
-            
-            nav ul {
-                flex-direction: column;
                 text-align: center;
-                width: 100%;
             }
             
-            nav ul li {
-                margin: 10px 0;
+            .nav-menu {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+                display: none;
+            }
+            
+            .nav-menu.show {
+                display: flex;
+            }
+            
+            .nav-menu li {
+                margin: 0 10px 10px;
             }
             
             .mobile-menu-btn {
                 display: block;
                 position: absolute;
-                top: 20px;
                 right: 20px;
+                top: 15px;
             }
             
-            nav {
-                display: none;
-                width: 100%;
-                margin-top: 15px;
+            .hero h1 {
+                font-size: 2.5rem;
             }
             
-            nav.active {
-                display: block;
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                height: 70vh;
             }
             
-            .hero h2 {
+            .hero h1 {
                 font-size: 2rem;
             }
             
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .rotator-slide img {
-                height: 300px;
-            }
-            
-            .rotator-btn {
-                width: 40px;
-                height: 40px;
-            }
-
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
-
-            .theme-changer {
-                top: auto;
-                bottom: 80px;
-                transform: none;
-                flex-direction: row;
-                border-radius: 10px 10px 0 0;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero {
-                padding: 120px 0 80px;
-            }
-            
             .section-title h2 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .rotator-slide img {
-                height: 250px;
-            }
-
-            .gallery-grid {
+            .services-grid, .amenities-grid {
                 grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Theme Changer -->
-    <div class="theme-changer">
-        <div class="theme-option active" style="background: linear-gradient(135deg, #6a11cb, #2575fc);" data-theme="default"></div>
-        <div class="theme-option" style="background: linear-gradient(135deg, #11998e, #38ef7d);" data-theme="green"></div>
-        <div class="theme-option" style="background: linear-gradient(135deg, #fc466b, #3f5efb);" data-theme="pink"></div>
-        <div class="theme-option" style="background: linear-gradient(135deg, #fdbb2d, #22c1c3);" data-theme="sunset"></div>
-        <div class="theme-option" style="background: linear-gradient(135deg, #8e2de2, #4a00e0);" data-theme="purple"></div>
-    </div>
-
     <!-- Header -->
     <header>
         <div class="container header-container">
-            <div class="logo">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMTAwIj48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzFhNGI4YyIvPjx0ZXh0IHg9IjEwMCIgeT0iNTUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyNCIgZmlsbD0iI2Y4YjczOSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U1RFTExBUjwvdGV4dD48dGV4dCB4PSIxMDAiIHk9Ijg1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkVWRU5UPC90ZXh0Pjwvc3ZnPg==" alt="Stellar Event Logo">
-                <h1>Stellar <span>Event</span></h1>
-            </div>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#director">Director</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+            <div class="logo"><i class="fas fa-star"></i> Stellar Event</div>
+            <button class="mobile-menu-btn">☰</button>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#amenities">Amenities</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact Me</a></li>
+            </ul>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h2>Welcome to Stellar Event</h2>
-            <p>Professional event management services for corporate events, weddings, exhibitions, and more. Creating memorable experiences that exceed expectations.</p>
-            <a href="#contact" class="btn">Get In Touch</a>
-        </div>
-    </section>
-
-    <!-- Image Rotator Section -->
-    <section class="image-rotator" id="gallery">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Gallery</h2>
+    <!-- Hero Section with Image Slider -->
+    <section id="home" class="hero">
+        <div class="slider">
+            <div class="slide slide-1 active"></div>
+            <div class="slide slide-2"></div>
+            <div class="slide slide-3"></div>
+            <div class="slide slide-4"></div>
+            
+            <div class="hero-content">
+                <h1>New Stellar Event</h1>
+                <p>Your One Window For Weddings, Corporate and all the Event Management Services.</p>
+                <a href="#contact" class="cta-button">Contact Us Today</a>
             </div>
-            <div class="rotator-container">
-                <div class="rotator-slides">
-                    <div class="rotator-slide">
-                        <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Corporate Event">
-                        <div class="slide-caption">
-                            <h3>Corporate Events</h3>
-                            <p>Professional event management for conferences and seminars</p>
-                        </div>
-                    </div>
-                    <div class="rotator-slide">
-                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Wedding Event">
-                        <div class="slide-caption">
-                            <h3>Wedding Celebrations</h3>
-                            <p>Creating unforgettable moments for your special day</p>
-                        </div>
-                    </div>
-                    <div class="rotator-slide">
-                        <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Product Launch">
-                        <div class="slide-caption">
-                            <h3>Product Launches</h3>
-                            <p>Strategic planning for successful product introductions</p>
-                        </div>
-                    </div>
-                    <div class="rotator-slide">
-                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Exhibition">
-                        <div class="slide-caption">
-                            <h3>Exhibitions</h3>
-                            <p>Comprehensive exhibition management from concept to execution</p>
-                        </div>
-                    </div>
-                    <div class="rotator-slide">
-                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="New Year Event">
-                        <div class="slide-caption">
-                            <h3>New Year Events</h3>
-                            <p>Spectacular celebrations to welcome the new year</p>
-                        </div>
-                    </div>
-                    <div class="rotator-slide">
-                        <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Annual Event">
-                        <div class="slide-caption">
-                            <h3>Annual Events</h3>
-                            <p>Planning and execution of annual corporate events</p>
-                        </div>
-                    </div>
-                    <div class="rotator-slide">
-                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Conference">
-                        <div class="slide-caption">
-                            <h3>Conferences</h3>
-                            <p>Professional conference management with attention to detail</p>
-                        </div>
-                    </div>
-                    <div class="rotator-slide">
-                        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Birthday Party">
-                        <div class="slide-caption">
-                            <h3>Birthday Parties</h3>
-                            <p>Creating memorable birthday celebrations for all ages</p>
-                        </div>
-                    </div>
-                    <div class="rotator-slide">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Award Ceremony">
-                        <div class="slide-caption">
-                            <h3>Award Ceremonies</h3>
-                            <p>Elegant and prestigious award ceremonies</p>
-                        </div>
-                    </div>
-                    <div class="rotator-slide">
-                        <img src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Team Building">
-                        <div class="slide-caption">
-                            <h3>Team Building Events</h3>
-                            <p>Engaging activities to strengthen team bonds</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="rotator-controls">
-                    <button class="rotator-btn prev-btn">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="rotator-btn next-btn">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                </div>
-                <div class="rotator-indicators">
-                    <div class="indicator active" data-index="0"></div>
-                    <div class="indicator" data-index="1"></div>
-                    <div class="indicator" data-index="2"></div>
-                    <div class="indicator" data-index="3"></div>
-                    <div class="indicator" data-index="4"></div>
-                    <div class="indicator" data-index="5"></div>
-                    <div class="indicator" data-index="6"></div>
-                    <div class="indicator" data-index="7"></div>
-                    <div class="indicator" data-index="8"></div>
-                    <div class="indicator" data-index="9"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Additional Image Gallery Section -->
-    <section class="image-gallery" id="portfolio">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Portfolio</h2>
-                <p>Explore some of our most successful events and memorable moments</p>
-            </div>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxury Wedding">
-                    <div class="gallery-caption">
-                        <h3>Luxury Wedding</h3>
-                        <p>Elegant wedding celebration with premium decor</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1556760544-74068565f05c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Corporate Gala">
-                    <div class="gallery-caption">
-                        <h3>Corporate Gala</h3>
-                        <p>Sophisticated corporate evening event</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1531058020387-3be344556be6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Product Launch">
-                    <div class="gallery-caption">
-                        <h3>Product Launch</h3>
-                        <p>Innovative product reveal event</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Charity Event">
-                    <div class="gallery-caption">
-                        <h3>Charity Event</h3>
-                        <p>Fundraising gala for a noble cause</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Festival Celebration">
-                    <div class="gallery-caption">
-                        <h3>Festival Celebration</h3>
-                        <p>Vibrant cultural festival organization</p>
-                    </div>
-                </div>
+            
+            <div class="slider-nav">
+                <div class="slider-dot active" data-slide="0"></div>
+                <div class="slider-dot" data-slide="1"></div>
+                <div class="slider-dot" data-slide="2"></div>
+                <div class="slider-dot" data-slide="3"></div>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section class="about" id="about">
+    <section id="about" class="about">
         <div class="container">
             <div class="section-title">
-                <h2>About Stellar Event</h2>
+                <h2>About Me</h2>
+                <p>Learn more about our event management expertise and commitment to excellence</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Creating Unforgettable Experiences</h3>
-                    <p>Stellar Event is a premier event management company based in Bhopal, specializing in creating exceptional events that leave a lasting impression. With years of experience in the industry, we have built a reputation for excellence and attention to detail.</p>
-                    <p>Our team of dedicated professionals works closely with clients to understand their vision and bring it to life. From intimate gatherings to large-scale corporate functions, we handle every aspect of event planning and execution with precision and creativity.</p>
-                    <p>We believe that every event is unique and deserves a personalized approach. Our commitment to quality and customer satisfaction has made us the preferred choice for event management in Central India.</p>
-                    <a href="#services" class="btn">Our Services</a>
+                    <h3>EVENT MANAGEMENT</h3>
+                    <p>Whether you're a seasoned event planner or putting together an event for the first time, a professional event dresser can go a long way to making sure that your event is the best it can be. New Stellar Event is able to decorate small and large-scale events down to the minute details, meticulously designing your venue to make sure that your special day or night runs without a hitch. For an experienced event dresser around the local area with an eye for detail, please get in touch through our booking form.</p>
+                    
+                    <h3>Competitive prices</h3>
+                    <p>We aim to keep our rates extremely competitive so that you can afford to throw the best party possible. After paying a small deposit, you can hire our services and equipment hourly or by the day, and we also offer pick-up and drop-off services so you have one less problem to worry about! Please get in touch to find out more about our rates and services for your specific needs.</p>
+                    
+                    <h3>Our services</h3>
+                    <p>There's an incredible number of things to keep track of when planning an event, and sometimes it can get daunting. Let us take care of making your event look great – it's one less thing you need to worry about, and you can be sure we'll do every thing we can to make your special day one to remember. To find out more about our services and expertise, please get in touch via the details provided.</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Event Management">
+                    <img src="programd.jpeg" alt="Event Management">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Gallery</h2>
+                <p>Take a look at some of our previous events and decorations</p>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="miting.jpeg" alt="Event 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Event 1">
+                </div>
+                 <div class="gallery-item">
+                    <img src="merij.jpeg" alt="Event 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Event 2">
+                </div>
+                <!-- <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Event 3">
+                </div> -->
+                <!-- <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Event 4">
+                </div> -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Event 5">
+                </div>
+                <!-- <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Event 6">
+                </div> -->
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Event 7">
+                </div>
+                <div class="gallery-item">
+                    <img src="merij3.jpeg" alt="Event 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="programd.jpeg" alt="Event 6">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Event 8">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section id="amenities" class="amenities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Amenities</h2>
+                <p>What we offer to make your event planning experience seamless</p>
+            </div>
+            <div class="amenities-grid">
+                <div class="amenity-item">
+                    <div class="amenity-icon">👶</div>
+                    <h3>Good for children</h3>
+                    <p>Family-friendly event planning and setups</p>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">⏰</div>
+                    <h3>24/7 availability</h3>
+                    <p>Round-the-clock support for your events</p>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">📅</div>
+                    <h3>By appointment only</h3>
+                    <p>Personalized attention for every client</p>
+                </div>
+                <div class="amenity-item">
+                    <div class="amenity-icon">💳</div>
+                    <h3>Debit & Credit cards accepted</h3>
+                    <p>Convenient payment options available</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="services" id="services">
+    <section id="services" class="services">
         <div class="container">
             <div class="section-title">
-                <h2>Our Services</h2>
+                <h2>Services</h2>
+                <p>Comprehensive event management solutions for all your needs</p>
             </div>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-briefcase"></i>
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Event Planning">
                     </div>
-                    <h3>Corporate Events</h3>
-                    <p>Professional event management for conferences, seminars, product launches, and corporate gatherings.</p>
+                    <div class="service-content">
+                        <h3>Event Planning</h3>
+                        <p>Comprehensive event planning services to bring your vision to life.</p>
+                        <a href="#contact" class="service-btn">Book Now</a>
+                    </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-glass-cheers"></i>
+                    <div class="service-image">
+                        <img src="merij.jpeg" alt="Wedding Planning">
                     </div>
-                    <h3>Weddings</h3>
-                    <p>Complete wedding planning and coordination to make your special day truly memorable.</p>
+                    <div class="service-content">
+                        <h3>Wedding Planning</h3>
+                        <p>Planning weddings can be a very difficult task with a mountain of things to consider. After all, you want your perfect day to be flawless.</p>
+                        <a href="#contact" class="service-btn">Book Now</a>
+                    </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-calendar-alt"></i>
+                    <div class="service-image">
+                        <img src="miting.jpeg" alt="Corporate Events">
                     </div>
-                    <h3>Annual Events</h3>
-                    <p>Planning and execution of annual corporate events, parties, and celebrations.</p>
+                    <div class="service-content">
+                        <h3>Corporate Events Planning</h3>
+                        <p>Professional corporate event management for businesses of all sizes.</p>
+                        <a href="#contact" class="service-btn">Book Now</a>
+                    </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-rocket"></i>
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Birthday Party">
                     </div>
-                    <h3>Product Launches</h3>
-                    <p>Strategic planning for successful product launches that create buzz and excitement.</p>
+                    <div class="service-content">
+                        <h3>Birthday Party</h3>
+                        <p>Memorable birthday celebrations tailored to your preferences.</p>
+                        <a href="#contact" class="service-btn">Book Now</a>
+                    </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-images"></i>
+                    <div class="service-image">
+                        <img src="programd.jpeg" alt="Theme Party">
                     </div>
-                    <h3>Exhibitions</h3>
-                    <p>Comprehensive exhibition management services from concept to execution.</p>
+                    <div class="service-content">
+                        <h3>Theme Party</h3>
+                        <p>Creative theme-based parties that transport your guests to another world.</p>
+                        <a href="#contact" class="service-btn">Book Now</a>
+                    </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-star"></i>
+                    <div class="service-image">
+                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Annual Events">
                     </div>
-                    <h3>New Year Events</h3>
-                    <p>Spectacular New Year celebrations and parties tailored to your requirements.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Director Info Section -->
-    <section class="director-info" id="director">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Director</h2>
-            </div>
-            <div class="director-container">
-                <div class="director-image">
-                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Mayank Khale">
-                </div>
-                <div class="director-details">
-                    <h3>Mayank Khale</h3>
-                    <div class="director-title">Director, Stellar Event</div>
-                    <p>With a passion for creating exceptional experiences and a keen eye for detail, Mayank Khale leads the Stellar Event team with vision and expertise. His dedication to client satisfaction and innovative approach to event management have established Stellar Event as a trusted name in the industry.</p>
-                    <p>Under his leadership, the company has successfully executed numerous high-profile events, earning a reputation for reliability, creativity, and excellence.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <h4>Phone Numbers</h4>
-                                <p>07554338933 | +917974907160</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h4>Email</h4>
-                                <p>stellarevent2k@gmail.com</p>
-                            </div>
-                        </div>
+                    <div class="service-content">
+                        <h3>Annual Events</h3>
+                        <p>Consistent excellence for your recurring annual celebrations.</p>
+                        <a href="#contact" class="service-btn">Book Now</a>
                     </div>
                 </div>
             </div>
@@ -1180,92 +882,75 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section id="contact" class="contact">
         <div class="container">
             <div class="section-title">
-                <h2>Contact Us</h2>
+                <h2>Contact Me</h2>
+                <p>Get in touch to discuss your event requirements</p>
             </div>
             <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Get In Touch</h3>
-                    <p>Ready to plan your next event? Contact us today to discuss your requirements and let us create something extraordinary for you.</p>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h4>Address</h4>
-                                <p>GB 18, Mansarovar Complex, MP Nagar, Bhopal</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <h4>Phone</h4>
-                                <p>07554338933 | +917974907160</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <h4>Email</h4>
-                                <p>stellarevent2k@gmail.com</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-globe"></i>
-                            <div>
-                                <h4>Website</h4>
-                                <p>https://new-stellar-event-bhopal.business.site/</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
                 <div class="contact-form">
+                    <h3>Send a Message</h3>
+                    <p>An email will be sent to the owner</p>
                     <form id="contactForm">
                         <div class="form-group">
-                            <label for="name">Full Name</label>
-                            <input type="text" id="name" required>
+                            <label for="name">Your name</label>
+                            <input type="text" id="name" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" required>
+                            <label for="email">Your email</label>
+                            <input type="email" id="email" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone">
+                            <label for="phone">Your phone number</label>
+                            <input type="tel" id="phone" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label for="event-type">Event Type</label>
-                            <select id="event-type" required>
-                                <option value="">Select Event Type</option>
-                                <option value="corporate">Corporate Event</option>
-                                <option value="wedding">Wedding</option>
-                                <option value="product-launch">Product Launch</option>
-                                <option value="exhibition">Exhibition</option>
-                                <option value="annual-event">Annual Event</option>
-                                <option value="new-year">New Year Event</option>
-                                <option value="other">Other</option>
-                            </select>
+                            <label for="message">Tell us about your request</label>
+                            <textarea id="message" class="form-control" rows="5" required></textarea>
                         </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" required></textarea>
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="terms" required>
+                            <label for="terms">I agree with the Terms & Conditions and the Privacy & Cookies Policy of UENI and any applicable Terms and Conditions of New Stellar Event. This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</label>
                         </div>
-                        <button type="submit" class="btn">Send Message</button>
+                        <button type="submit" class="cta-button">Send Message</button>
                     </form>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-details">
+                        <h3>Contact Details</h3>
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <p><strong>Address:</strong></p>
+                                <p>
+                                  GB 18, Mansarovar Complex, MP Nagar, Bhopal
+                                </p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div>
+                                <p><strong>Phone:</strong></p>
+                 <p>07554338933 | +917974907160</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">✉️</div>
+                            <div>
+                                <p><strong>Email:</strong></p>
+                              <p>stellarevent2k@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                  
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+   <footer>
         <div class="container">
             <div class="footer-container">
                 <div class="footer-col">
@@ -1322,78 +1007,54 @@
             </div>
         </div>
     </footer>
-
-    <!-- Back to Top Button -->
-    <div class="back-to-top">
-        <i class="fas fa-chevron-up"></i>
-    </div>
-
     <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const nav = document.querySelector('nav');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            nav.classList.toggle('active');
-        });
-        
-        // Close mobile menu when clicking on a link
-        const navLinks = document.querySelectorAll('nav a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('active');
+        // Image Slider Functionality
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            currentSlide = (n + slides.length) % slides.length;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        // Start automatic slideshow
+        function startSlider() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        // Initialize slider
+        function initSlider() {
+            // Add click events to dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    clearInterval(slideInterval);
+                    showSlide(index);
+                    startSlider();
+                });
             });
-        });
-        
-        // Back to Top Button
-        const backToTopBtn = document.querySelector('.back-to-top');
-        
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('active');
-            } else {
-                backToTopBtn.classList.remove('active');
-            }
             
-            // Header scroll effect
-            const header = document.querySelector('header');
-            if (window.pageYOffset > 100) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-        
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // Contact Form Submission
-        const contactForm = document.getElementById('contactForm');
-        
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const eventType = document.getElementById('event-type').value;
-            const message = document.getElementById('message').value;
-            
-            // In a real application, you would send this data to a server
-            // For this example, we'll just show an alert
-            alert(`Thank you, ${name}! Your message about ${eventType} has been received. We will contact you at ${email} soon.`);
-            
-            // Reset the form
-            contactForm.reset();
+            startSlider();
+        }
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('show');
         });
         
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 
                 const targetId = this.getAttribute('href');
@@ -1403,220 +1064,36 @@
                 if(targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
-                       behavior: 'smooth'
+                        behavior: 'smooth'
                     });
+                    
+                    // Close mobile menu if open
+                    document.querySelector('.nav-menu').classList.remove('show');
                 }
             });
         });
-        
-        // Scroll animations
-        function checkScroll() {
-            const aboutImage = document.querySelector('.about-image');
-            const serviceCards = document.querySelectorAll('.service-card');
-            const directorImage = document.querySelector('.director-image');
-            const directorDetails = document.querySelector('.director-details');
-            const galleryItems = document.querySelectorAll('.gallery-item');
-            
-            // About image animation
-            if (isElementInViewport(aboutImage)) {
-                aboutImage.classList.add('animate');
-            }
-            
-            // Service cards animation
-            serviceCards.forEach((card, index) => {
-                if (isElementInViewport(card)) {
-                    setTimeout(() => {
-                        card.classList.add('animate');
-                    }, index * 200);
-                }
-            });
-            
-            // Director section animation
-            if (isElementInViewport(directorImage)) {
-                directorImage.classList.add('animate');
-                directorDetails.classList.add('animate');
-            }
-            
-            // Gallery items animation
-            galleryItems.forEach((item, index) => {
-                if (isElementInViewport(item)) {
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'translateY(0)';
-                    }, index * 100);
-                }
-            });
-        }
-        
-        function isElementInViewport(el) {
-            const rect = el.getBoundingClientRect();
-            return (
-                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8
-            );
-        }
-        
-        window.addEventListener('scroll', checkScroll);
-        window.addEventListener('load', checkScroll);
-        
-        // Image Rotator Functionality
-        const rotatorSlides = document.querySelector('.rotator-slides');
-        const slides = document.querySelectorAll('.rotator-slide');
-        const prevBtn = document.querySelector('.prev-btn');
-        const nextBtn = document.querySelector('.next-btn');
-        const indicators = document.querySelectorAll('.indicator');
-        
-        let currentSlide = 0;
-        const slideCount = slides.length;
-        let slideInterval;
-        
-        // Function to go to a specific slide
-        function goToSlide(index) {
-            if (index < 0) {
-                currentSlide = slideCount - 1;
-            } else if (index >= slideCount) {
-                currentSlide = 0;
-            } else {
-                currentSlide = index;
-            }
-            
-            rotatorSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
-            
-            // Update indicators
-            indicators.forEach((indicator, i) => {
-                if (i === currentSlide) {
-                    indicator.classList.add('active');
-                } else {
-                    indicator.classList.remove('active');
-                }
-            });
-        }
-        
-        // Function to go to next slide
-        function nextSlide() {
-            goToSlide(currentSlide + 1);
-        }
-        
-        // Function to go to previous slide
-        function prevSlide() {
-            goToSlide(currentSlide - 1);
-        }
-        
-        // Start automatic sliding
-        function startSlideShow() {
-            slideInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
-        }
-        
-        // Stop automatic sliding
-        function stopSlideShow() {
-            clearInterval(slideInterval);
-        }
-        
-        // Event listeners for buttons
-        nextBtn.addEventListener('click', () => {
-            stopSlideShow();
-            nextSlide();
-            startSlideShow();
-        });
-        
-        prevBtn.addEventListener('click', () => {
-            stopSlideShow();
-            prevSlide();
-            startSlideShow();
-        });
-        
-        // Event listeners for indicators
-        indicators.forEach(indicator => {
-            indicator.addEventListener('click', () => {
-                const index = parseInt(indicator.getAttribute('data-index'));
-                stopSlideShow();
-                goToSlide(index);
-                startSlideShow();
-            });
-        });
-        
-        // Pause on hover
-        const rotatorContainer = document.querySelector('.rotator-container');
-        rotatorContainer.addEventListener('mouseenter', stopSlideShow);
-        rotatorContainer.addEventListener('mouseleave', startSlideShow);
-        
-        // Initialize the rotator
-        startSlideShow();
 
-        // Theme Changer Functionality
-        const themeOptions = document.querySelectorAll('.theme-option');
-        
-        // Define themes
-        const themes = {
-            default: {
-                primary: '#1a4b8c',
-                secondary: '#f8b739',
-                light: '#f5f7fa',
-                dark: '#333',
-                heroOverlay: 'rgba(0, 0, 0, 0.5)'
-            },
-            green: {
-                primary: '#11998e',
-                secondary: '#38ef7d',
-                light: '#f0f9f7',
-                dark: '#2c3e50',
-                heroOverlay: 'rgba(0, 0, 0, 0.5)'
-            },
-            pink: {
-                primary: '#fc466b',
-                secondary: '#3f5efb',
-                light: '#fdf2f5',
-                dark: '#2c3e50',
-                heroOverlay: 'rgba(0, 0, 0, 0.5)'
-            },
-            sunset: {
-                primary: '#fdbb2d',
-                secondary: '#22c1c3',
-                light: '#fff9f0',
-                dark: '#2c3e50',
-                heroOverlay: 'rgba(0, 0, 0, 0.5)'
-            },
-            purple: {
-                primary: '#8e2de2',
-                secondary: '#4a00e0',
-                light: '#f5f0ff',
-                dark: '#2c3e50',
-                heroOverlay: 'rgba(0, 0, 0, 0.5)'
-            }
-        };
-        
-        // Apply theme
-        function applyTheme(themeName) {
-            const theme = themes[themeName];
-            document.documentElement.style.setProperty('--primary', theme.primary);
-            document.documentElement.style.setProperty('--secondary', theme.secondary);
-            document.documentElement.style.setProperty('--light', theme.light);
-            document.documentElement.style.setProperty('--dark', theme.dark);
-            document.documentElement.style.setProperty('--hero-overlay', theme.heroOverlay);
-            
-            // Update active state
-            themeOptions.forEach(option => {
-                if (option.getAttribute('data-theme') === themeName) {
-                    option.classList.add('active');
-                } else {
-                    option.classList.remove('active');
-                }
-            });
-            
-            // Save to localStorage
-            localStorage.setItem('selectedTheme', themeName);
-        }
-        
-        // Event listeners for theme options
-        themeOptions.forEach(option => {
-            option.addEventListener('click', () => {
-                const themeName = option.getAttribute('data-theme');
-                applyTheme(themeName);
-            });
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
         });
-        
-        // Load saved theme
-        const savedTheme = localStorage.getItem('selectedTheme') || 'default';
-        applyTheme(savedTheme);
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.padding = '5px 0';
+                header.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+            } else {
+                header.style.padding = '0';
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // Initialize the slider when page loads
+        window.addEventListener('DOMContentLoaded', initSlider);
     </script>
 </body>
 </html>
